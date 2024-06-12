@@ -29,7 +29,7 @@ const config: { [key: string]: Knex.Config } = {
     },
     pool: { min: 0, max: 10 },
     migrations: {
-      directory: "./dist/migrations", // Ensure it matches the compiled directory
+      directory: "./dist/migrations", // Ensure it matches the com
       extension: "js", // Ensure it matches the compiled extension
     },
   },
