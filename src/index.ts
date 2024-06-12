@@ -1,3 +1,4 @@
+import http from "http";
 import knex from "knex";
 import knexConfig from "./knexfile";
 import "dotenv/config";
@@ -17,9 +18,15 @@ const testConnection = async () => {
 
 testConnection();
 
-// Keep the application running
-setInterval(() => {
-  console.log("App is running...");
-}, 10000); // Log a message every 10 seconds
+const port = process.env.PORT || 3000;
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader("Content-Type", "text/plain");
+  res.end("App is running...\n");
+});
+
+server.listen(port, () => {
+  console.log(`Server running at port ${port}`);
+});
 
 export default db;
