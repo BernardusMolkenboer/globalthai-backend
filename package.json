@@ -1,38 +1,32 @@
-import type { Knex } from 'knex';
-import 'dotenv/config';
-
-const config: { [key: string]: Knex.Config } = {
-  development: {
-    client: 'mysql2',
-    connection: {
-      host: process.env.DATABASE_HOST || '127.0.0.1',
-      port: parseInt(process.env.DATABASE_PORT || '3306', 10),
-      user: process.env.DATABASE_USER || 'root',
-      password: process.env.DATABASE_PASS || 'W4chtw00rd!23',
-      database: process.env.DATABASE_DB || 'realty_db',
-    },
-    pool: { min: 0, max: 10 },
-    migrations: {
-      tableName: 'knex_migrations',
-      directory: './dist/migrations', // Ensure it matches the compiled directory
-      extension: 'js', // Ensure it matches the compiled extension
-    },
+{
+  "name": "common",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "knex": "ts-node -r tsconfig-paths/register ./node_modules/.bin/knex",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "postinstall": "npm run build"
   },
-  production: {
-    client: 'mysql2',
-    connection: {
-      host: process.env.DATABASE_HOST,
-      port: parseInt(process.env.DATABASE_PORT || '3306', 10),
-      user: process.env.DATABASE_USER,
-      password: process.env.DATABASE_PASS,
-      database: process.env.DATABASE_DB,
-    },
-    pool: { min: 0, max: 10 },
-    migrations: {
-      directory: './dist/migrations', // Ensure it matches the compiled directory
-      extension: 'js', // Ensure it matches the compiled extension
-    },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "fs": "^0.0.1-security",
+    "knex": "^3.1.0",
+    "mysql2": "^3.10.0",
+    "oracledb": "^6.5.1",
+    "pg-query-stream": "^4.6.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
-};
-
-export default config;
+  "devDependencies": {
+    "@types/node": "^20.14.2",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.4.5"
+  },
+  "description": ""
+}
