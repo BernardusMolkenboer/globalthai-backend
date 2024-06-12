@@ -14,8 +14,8 @@ const config: { [key: string]: Knex.Config } = {
     pool: { min: 0, max: 10 },
     migrations: {
       tableName: "knex_migrations",
-      directory: "./migrations",
-      extension: "ts",
+      directory: "./dist/migrations", // Update to compiled directory
+      extension: "js", // Ensure it matches the compiled extension
     },
   },
   production: {
@@ -29,8 +29,8 @@ const config: { [key: string]: Knex.Config } = {
     },
     pool: { min: 0, max: 10 },
     migrations: {
-      directory: "./migrations",
-      extension: "ts",
+      directory: "./dist/migrations", // Update to compiled directory
+      extension: "js", // Ensure it matches the compiled extension
     },
   },
 };
