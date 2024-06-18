@@ -19,7 +19,7 @@ export async function up(knex: Knex): Promise<void> {
     table.boolean("is_active").notNullable().defaultTo(true); // Account active status
     table.boolean("is_verified").notNullable().defaultTo(false); // Email verification status
     table.string("verification_token").nullable(); // Email verification token
-    table.timestamp("verification_token_expires").nullable(); // Email verification token expiration
+    table.timestamp("verification_token_expires").nullable(); // Email verification toke expiration
     table.string("reset_password_token").nullable(); // Password reset token
     table.timestamp("reset_password_token_expires").nullable(); // Password reset token expiration
   });
