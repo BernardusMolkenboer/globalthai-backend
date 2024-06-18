@@ -7,7 +7,7 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "moduleResolution": "node",
-    "outDir": "./src/dist", // Change this to ./src/dist
+    "outDir": "./dist", // Corrected output directory
     "rootDir": "./src",
     "typeRoots": ["./node_modules/@types", "./types"]
   },
