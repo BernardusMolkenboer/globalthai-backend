@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "knex": "ts-node -r tsconfig-paths/register ./node_modules/.bin/knex --knexfile ./src/knexfile.ts",
-    "build": "tsc",
+    "build": "tsc && cp -r src/migrations src/dist/migrations",
     "start": "node dist/index.js",
     "postinstall": "npm run build",
     "migrate": "ts-node ./src/migrate.ts"
