@@ -6,30 +6,11 @@ import "dotenv/config";
 import authRoutes from "./routes/auth";
 import propertyRoutes from "./routes/properties";
 
+const app = express();
 const environment = process.env.NODE_ENV || "development";
 const config = knexConfig[environment];
 const db = knex(config);
 
-const app = express();
-
-// Middleware
-app.use(express.json());
-
-// Enable CORS for all routes
-app.use(
-  cors({
-    origin: ["http://localhost:3000", "https://www.globalthairealty.com"],
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    credentials: true,
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
-
-// Routes
-app.use("/api/auth", authRoutes);
-app.use("/api/properties", propertyRoutes);
-
-// Test database connection
 const testConnection = async () => {
   try {
     const result = await db.raw("SELECT 1+1 AS result");
@@ -41,9 +22,21 @@ const testConnection = async () => {
 
 testConnection();
 
+// Middleware to parse JSON requests
+app.use(express.json());
+
+// Enable CORS for your frontend
+const corsOptions = {
+  origin: process.env.FRONTEND_URL || "http://localhost:3000",
+  optionsSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
+
+// Route handlers
+app.use("/api/auth", authRoutes);
+app.use("/api/properties", propertyRoutes);
+
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
   console.log(`Server running at port ${port}`);
 });
-
-export default db;
