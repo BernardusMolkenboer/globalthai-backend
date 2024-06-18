@@ -3,7 +3,7 @@
     "target": "es2016",
     "module": "commonjs",
     "strict": true,
-    "esModuleInterop": true, // Ensure this is set
+    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "moduleResolution": "node",

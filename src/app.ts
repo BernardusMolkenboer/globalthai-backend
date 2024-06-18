@@ -3,7 +3,7 @@ import cors from "cors";
 import knex from "knex";
 import knexConfig from "./knexfile";
 import "dotenv/config";
-import authRoutes from "./routes/auth";
+import authRoutes from "./routes/authRoutes";
 import propertyRoutes from "./routes/properties";
 
 const app = express();
@@ -25,11 +25,12 @@ testConnection();
 // Middleware to parse JSON requests
 app.use(express.json());
 
-// Enable CORS for your frontend
+// CORS configuration
 const corsOptions = {
-  origin: process.env.FRONTEND_URL || "http://localhost:3000",
-  optionsSuccessStatus: 200,
+  origin: "http://localhost:3000", // Replace with your frontend URL
+  optionsSuccessStatus: 200, // Some legacy browsers (IE11, various SmartTVs) choke on 204
 };
+
 app.use(cors(corsOptions));
 
 // Route handlers
