@@ -1,6 +1,6 @@
-import db from "./app";
-import { Logger } from "./Logger";
+import db from "../services/db";
 import { Logs } from "./Logs";
+import { Logger } from "./Logger";
 
 export class Entity {
   protected static table: string;

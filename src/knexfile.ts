@@ -1,5 +1,6 @@
 import type { Knex } from "knex";
 import "dotenv/config";
+import path from "path";
 
 const config: { [key: string]: Knex.Config } = {
   development: {
@@ -14,8 +15,8 @@ const config: { [key: string]: Knex.Config } = {
     pool: { min: 0, max: 10 },
     migrations: {
       tableName: "knex_migrations",
-      directory: "./dist/migrations", // Ensure it matches the compiled directory
-      extension: "js", // Ensure it matches the compiled extension
+      directory: path.resolve(__dirname, "migrations"), // Absolute path to the migrations directory
+      extension: "ts", // Use TypeScript extension for development
     },
   },
   production: {
@@ -29,8 +30,8 @@ const config: { [key: string]: Knex.Config } = {
     },
     pool: { min: 0, max: 10 },
     migrations: {
-      directory: "./dist/migrations", // Ensure it matches the com
-      extension: "js", // Ensure it matches the compiled extension
+      directory: path.resolve(__dirname, "../dist/migrations"), // Absolute path to the dist migrations directory
+      extension: "js", // Use JavaScript extension for production
     },
   },
 };

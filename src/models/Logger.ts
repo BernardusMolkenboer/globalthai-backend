@@ -1,4 +1,4 @@
-import db from "./app";
+import db from "../services/db";
 import { Logs } from "./Logs";
 
 export class Logger {
