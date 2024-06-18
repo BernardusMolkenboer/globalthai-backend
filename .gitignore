@@ -27,8 +27,3 @@ Thumbs.db
 
 # Miscellaneous
 coverage/
-
-/node_modules/*
-/node_modules/
-/node_modules
-node_modules
