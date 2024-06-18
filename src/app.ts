@@ -11,6 +11,7 @@ const environment = process.env.NODE_ENV || "development";
 const config = knexConfig[environment];
 const db = knex(config);
 
+// Function to test database connection
 const testConnection = async () => {
   try {
     const result = await db.raw("SELECT 1+1 AS result");
@@ -27,7 +28,7 @@ app.use(express.json());
 
 // CORS configuration
 const corsOptions = {
-  origin: "http://localhost:3000", // Replace with your frontend URL
+  origin: process.env.FRONTEND_URL || "http://127.0.0.1:3000", // Replace with your frontend URL
   optionsSuccessStatus: 200, // Some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
